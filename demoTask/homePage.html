@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="formStyle.css" />
+  </head>
+
+  <body>
+    <h2 style="text-align: center">Personal Details</h2>
+    <form id="myForm">
+      <table>
+        <tbody>
+          <tr>
+            <td><label for="Name"> Name</label></td>
+            <td>
+              <input
+                type="text"
+                id="Name"
+                class="field_border"
+                placeholder="Enter your Name"
+              />
+              <p
+                id="nameError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="Email"> Email</label></td>
+            <td>
+              <input
+                type="email"
+                id="Email"
+                class="field_border"
+                placeholder="Enter your Email"
+              />
+              <p
+                id="emailError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="DOB"> DOB</label></td>
+            <td>
+              <input
+                type="date"
+                id="DOB"
+                placeholder="DD/MM/YYYY"
+                class="field_border"
+              />
+              <p
+                id="dobError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="Gender" id="gender">Gender</label></td>
+            <td style="text-align: start">
+              <input type="radio" id="Male" name="gender" value="Male" />
+              <label for="Male">Male</label>
+              <input type="radio" id="Female" name="gender" value="Female" />
+              <label for="Female">Female</label>
+              <p
+                id="genderError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="hobby" id="hobby">Hobby</label></td>
+            <td>
+              <input
+                type="checkbox"
+                id="Reading"
+                name="hobby"
+                value="Reading"
+              />
+              <label for="Reading"> Reading</label>
+              <input
+                type="checkbox"
+                id="Traveling"
+                name="hobby"
+                value="Traveling"
+              />
+              <label for="Traveling"> Traveling</label>
+              <input type="checkbox" id="Sports" name="hobby" value="Sports" />
+              <label for="Sports"> Sports</label>
+              <p
+                id="hobbyError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="country">Country</label></td>
+            <td>
+              <select
+                id="country"
+                name="country"
+                onchange="getState()"
+                class="field_border"
+              >
+                <option>Select Country</option>
+              </select>
+              <p
+                id="countryError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="state">State</label></td>
+            <td>
+              <select id="state" onchange="getCity()" class="field_border">
+                <option>Select State</option>
+              </select>
+              <p
+                id="stateError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="city">City</label></td>
+            <td>
+              <select id="city" class="field_border">
+                <option>Select City</option>
+              </select>
+              <p
+                id="cityError"
+                style="font-size: 15px; color: red; margin-left: 50px"
+              ></p>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="submit">Action</label></td>
+            <td>
+              <input
+                type="submit"
+                value="Submit"
+                name="submit"
+                id="submitButton"
+                class="button save"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <br />
+
+    <div>
+      <form id="myForm2">
+        <div>
+          <input
+            type="text"
+            id="myInput"
+            onkeyup="tableFilter()"
+            placeholder="Search for names.."
+            title="Type in a name"
+          />
+        </div>
+        <div>
+          <select
+            name="sort"
+            id="sort"
+            onchange="sortData(persons)"
+            class="field_border"
+            style="width: 200px"
+          >
+            <option value="Default">Default</option>
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <br />
+    <table id="detailTable" style="width: 100%">
+      <thead>
+        <tr class="showPersonalInfo">
+          <th>Index</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Dob</th>
+          <th>Gender</th>
+          <th>Hobby</th>
+          <th>Country</th>
+          <th>State</th>
+          <th>City</th>
+          <th>Delete</th>
+          <th>Modify</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody1"></tbody>
+    </table>
+    <br /><br />
+    <script src="personalData.js"></script>
+    <script src="city.js"></script>
+    <script src="formValidation.js"></script>
+  </body>
+</html>

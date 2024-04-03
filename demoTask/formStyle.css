@@ -1,0 +1,144 @@
+table,
+th,
+td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.showPersonalInfo,thead {
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+/* for table even-odd design  */
+.bodydesign
+{
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+}
+#table2, 
+#box ,#detailTable{
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+
+.field_border {
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid lightgray;
+}
+
+.button {
+  border: none;
+  width: 100%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.cancel
+{
+  margin-top: 10px;
+  border: none;
+  width: 250px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 12px;
+
+  margin: 0;
+  position: absolute;
+
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+
+.save {
+  background-color: royalblue;
+}
+
+.remove {
+  background-color: red;
+  
+  /* max-width: 200px; */
+}
+
+.edit {
+  background-color: gray;
+}
+
+#myForm2 {
+  margin: 10px;
+}
+
+#search {
+  width: 30%;
+  height: 30px;
+  margin-left: 30%;
+  margin-top: 10px;
+  /* transform: translate(-50%); */
+}
+
+#myInput {
+   
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 95%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  
+}
+
+/* 
+.search
+ {
+  --padding:24px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: var(--padding);
+  border-radius: 28px;
+  background: #f6f6f6;
+  width: 600px;
+ }
+
+ .search-input
+ {
+  font-size: 16px;
+  font-family: 'Lexend',sans-serif;
+  color: #333333;
+  margin-left: var(--padding);
+  outline: none;
+  border: none;
+  background: transparent;
+  flex: 1;
+ } */
+
+
+
+
+
