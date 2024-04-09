@@ -47,11 +47,11 @@ const persons = [
     dob: "2583-08-15",
     gender: "Male",
     hobby: "Traveling",
-    
+
     country: "Japan",
-     
+
     state: "Ibaragi",
-     
+
     city: "Mito",
   },
 ];
@@ -74,42 +74,39 @@ const getDataFromForm = () => {
 
 myForm.addEventListener("submit", (e) => {
   e.preventDefault();
-   
-    getDataFromForm();
 
-    const formData = {
-      id: id,
-      name: userName.value,
-      email: userEmail.value,
-      dob: userDOB.value,
-      gender: gender,
-      hobby: hobbyArray,
-      country: userCountry.value,
-      state: userState.value,
-      city: userCity.value,
-    };
-formValidation();
-   if(formValid == true)
-   {
+  getDataFromForm();
+
+  const formData = {
+    id: id,
+    name: userName.value,
+    email: userEmail.value,
+    dob: userDOB.value,
+    gender: gender,
+    hobby: hobbyArray,
+    country: userCountry.value,
+    state: userState.value,
+    city: userCity.value,
+  };
+  formValidation();
+  if (formValid == true) {
     if (submitBtn.id === "submitButton") {
       persons.push(formData);
       cancelEdit();
       clearForm();
       id++;
-     
     }
-    formValid=false; 
-   }
+    formValid = false;
+  }
 
-   
   table.innerHTML = "";
   addRowData(persons);
 });
 
 const clearForm = () => {
   myForm.reset();
-  document.getElementById("state").options.length=0;
-  document.getElementById("city").options.length=0;
+  document.getElementById("state").options.length = 0;
+  document.getElementById("city").options.length = 0;
   Male.checked = false;
   Female.checked = false;
   Reading.checked = false;
@@ -117,53 +114,50 @@ const clearForm = () => {
   Sports.checked = false;
 };
 
- 
 function addRowData(array) {
-   
-    array.forEach((element, index) => {
-      const addTableRow = document.createElement("tr");
-  
-      for (const key in element) {
-        const rowData = document.createElement("td");
-  
-        if (key === "id") {
-          rowData.innerHTML = index + 1;
-          addTableRow.id = element.id;
-        } else if (key === "name") {
-          rowData.innerHTML = `${element[key]}`;
-  
-          rowData.id = `name${element.id}`;
-        } else {
-          rowData.innerHTML = element[key];
-        }
-        rowData.style.textAlign = "center";
-  
-        addTableRow.appendChild(rowData);
+  array.forEach((element, index) => {
+    const addTableRow = document.createElement("tr");
+
+    for (const key in element) {
+      const rowData = document.createElement("td");
+
+      if (key === "id") {
+        rowData.innerHTML = index + 1;
+        addTableRow.id = element.id;
+      } else if (key === "name") {
+        rowData.innerHTML = `${element[key]}`;
+
+        rowData.id = `name${element.id}`;
+      } else {
+        rowData.innerHTML = element[key];
       }
-  
-      const addDeleteButton = document.createElement("td");
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Delete";
-      deleteButton.id = `deleteBtn${element.id}`;
-  
-      deleteButton.classList.add("button", "remove");
-      deleteButton.setAttribute("onclick", "deleteTableRow(this.id)");
-      addDeleteButton.appendChild(deleteButton);
-      addTableRow.appendChild(addDeleteButton);
-  
-      const addEditButton = document.createElement("td");
-      const editButton = document.createElement("button");
-      editButton.setAttribute("onclick", "editTableRow(this.id)");
-      editButton.id = `editBtn${element.id}`;
-      editButton.classList.add("button", "edit");
-      editButton.innerHTML = "Edit";
-  
-      addEditButton.appendChild(editButton);
-      addTableRow.appendChild(addEditButton);
-  
-      table.appendChild(addTableRow);
-    });
-   
+      rowData.style.textAlign = "center";
+
+      addTableRow.appendChild(rowData);
+    }
+
+    const addDeleteButton = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Delete";
+    deleteButton.id = `deleteBtn${element.id}`;
+
+    deleteButton.classList.add("button", "remove");
+    deleteButton.setAttribute("onclick", "deleteTableRow(this.id)");
+    addDeleteButton.appendChild(deleteButton);
+    addTableRow.appendChild(addDeleteButton);
+
+    const addEditButton = document.createElement("td");
+    const editButton = document.createElement("button");
+    editButton.setAttribute("onclick", "editTableRow(this.id)");
+    editButton.id = `editBtn${element.id}`;
+    editButton.classList.add("button", "edit");
+    editButton.innerHTML = "Edit";
+
+    addEditButton.appendChild(editButton);
+    addTableRow.appendChild(addEditButton);
+
+    table.appendChild(addTableRow);
+  });
 }
 
 const cancelBtn = document.createElement("button");
@@ -171,13 +165,12 @@ cancelBtn.innerHTML = "Cancel";
 cancelBtn.classList.add("cancel", "edit");
 
 function editTableRow(ids) {
- 
   editButtonId = ids;
   const getEditButtonNumber = 7;
-  let editButton = +editButtonId.slice(getEditButtonNumber);  
+  let editButton = +editButtonId.slice(getEditButtonNumber);
 
   cancelBtn.style.display = "inline";
- 
+
   submitBtn.value = "Update";
   submitBtn.innerText = "Update";
   submitBtn.id = "updateButton";
@@ -212,14 +205,10 @@ function editTableRow(ids) {
   cancelBtn.addEventListener("click", (e) => {
     e.preventDefault();
     cancelEdit();
-    
-     
   });
 }
 
 function updateTableData(ids) {
- 
-
   let editButton = +editButtonId.slice(7);
 
   const newData = {
@@ -233,12 +222,11 @@ function updateTableData(ids) {
     state: userState.value,
     city: userCity.value,
   };
-  
+
   console.log(newData);
   formValidation();
 
-   if(formValid == true)
-   {
+  if (formValid == true) {
     if (submitBtn.id == "updateButton") {
       for (let i = 0; i < persons.length; i++) {
         if (editButton == persons[i].id) {
@@ -246,17 +234,12 @@ function updateTableData(ids) {
           break;
         }
       }
-       
-      cancelEdit();
-    }  
-   }
-  
-    table.innerHTML = "";
-    addRowData(persons);
-    
- 
 
-  
+      cancelEdit();
+    }
+  }
+  table.innerHTML = "";
+  addRowData(persons);
 }
 
 function cancelEdit() {
@@ -281,7 +264,7 @@ function deleteTableRow(id) {
   }
   table.innerHTML = "";
   addRowData(persons);
-  
+
   cancelEdit();
   showMessageOnTableEmpty(persons);
 }
@@ -328,7 +311,6 @@ function tableFilter() {
   tbody = table.getElementsByTagName("tbody")[0];
   tr = tbody.getElementsByTagName("tr");
 
-   
   for (i = 0; i < tr.length; i++) {
     if (
       !(
@@ -418,7 +400,7 @@ let Cities = {
             { name: "Surendranagar" },
             { name: "Tapi" },
             { name: "Vadodara" },
-            { name: "Valsad" }
+            { name: "Valsad" },
           ],
         },
         {
@@ -449,23 +431,23 @@ let Cities = {
           ],
         },
         {
-          name : "AndraPradesh",
+          name: "AndraPradesh",
           cities: [
-            { name :"Anantapur"},
-            { name :"Chittoor"},
-            { name :"East Godavari"},
-            { name :"Guntur"},
-            { name :"Kadapa"},
-            { name :"Krishna"},
-            { name :"Kurnool"},
-            { name :"Prakasam"},
-            { name :"Nellore"},
-            { name :"Srikakulam"},
-            { name :"Visakhapatnam"},
-            { name :"Vizianagaram"},
-            { name :"West Godavari"},
+            { name: "Anantapur" },
+            { name: "Chittoor" },
+            { name: "East Godavari" },
+            { name: "Guntur" },
+            { name: "Kadapa" },
+            { name: "Krishna" },
+            { name: "Kurnool" },
+            { name: "Prakasam" },
+            { name: "Nellore" },
+            { name: "Srikakulam" },
+            { name: "Visakhapatnam" },
+            { name: "Vizianagaram" },
+            { name: "West Godavari" },
           ],
-        }
+        },
       ],
     },
     {
@@ -509,7 +491,7 @@ let Cities = {
         },
       ],
     },
-   
+
     {
       countryname: "Japan",
       states: [
@@ -529,94 +511,94 @@ let Cities = {
       countryname: "UK",
       states: [
         {
-          name:"England",
-          cities:[
-      { name :"Bath"},
-      { name :"Birmingham"},
-      { name :"Bradford"},
-      { name :"Brighton & Hove"},
-      { name :"Bristol"},
-      { name :"Cambridge"},
-      { name :"Canterbury"},
-      { name :"Carlisle"},
-      { name :"Chelmsford"},
-      { name :"Chester"},
-      { name :"Chichester"},
-      { name :"Colchester"},
-      { name :"Coventry"},
-      { name :"Derby"},
-      { name :"Doncaster"},
-      { name :"Durham"},
-      { name :"Ely"},
-      { name :"Exeter"},
-      { name :"Gloucester"},
-      { name :"Hereford"},
-      { name :"Kingston-upon-Hull"},
-      { name :"Lancaster"},
-      { name :"Leeds"},
-      { name :"Leicester"},
-      { name :"Lichfield"},
-      { name :"Lincoln"},
-      { name :"Liverpool"},
-      { name :"London"},
-      { name :"Manchester"},
-      { name :"Milton Keynes"},
-      { name :"Newcastle-upon-Tyne"},
-      { name :"Norwich"},
-      { name :"Nottingham"},
-      { name :"Oxford"},
-      { name :"Peterborough"},
-      { name :"Plymouth"},
-      { name :"Portsmouth"},
-      { name :"Preston"},
-      { name :"Ripon"},
-      { name :"Salford"},
-      { name :"Salisbury"},
-      { name :"Sheffield"},
-      { name :"Southampton"},
-      { name :"Southend-on-Sea"},
-      { name :"St Albans"},
-      { name :"Stoke on Trent"},
-      { name :"Sunderland"},
-      { name :"Truro"},
-      { name :"Wakefield"},
-      { name :"Wells"},
-      { name :"Westminster"},
-      { name :"Winchester"},
-      { name :"Wolverhampton"},
-      { name :"Worcester"},
-      { name :"York"},
-          ]
-        }
-      ]
+          name: "England",
+          cities: [
+            { name: "Bath" },
+            { name: "Birmingham" },
+            { name: "Bradford" },
+            { name: "Brighton & Hove" },
+            { name: "Bristol" },
+            { name: "Cambridge" },
+            { name: "Canterbury" },
+            { name: "Carlisle" },
+            { name: "Chelmsford" },
+            { name: "Chester" },
+            { name: "Chichester" },
+            { name: "Colchester" },
+            { name: "Coventry" },
+            { name: "Derby" },
+            { name: "Doncaster" },
+            { name: "Durham" },
+            { name: "Ely" },
+            { name: "Exeter" },
+            { name: "Gloucester" },
+            { name: "Hereford" },
+            { name: "Kingston-upon-Hull" },
+            { name: "Lancaster" },
+            { name: "Leeds" },
+            { name: "Leicester" },
+            { name: "Lichfield" },
+            { name: "Lincoln" },
+            { name: "Liverpool" },
+            { name: "London" },
+            { name: "Manchester" },
+            { name: "Milton Keynes" },
+            { name: "Newcastle-upon-Tyne" },
+            { name: "Norwich" },
+            { name: "Nottingham" },
+            { name: "Oxford" },
+            { name: "Peterborough" },
+            { name: "Plymouth" },
+            { name: "Portsmouth" },
+            { name: "Preston" },
+            { name: "Ripon" },
+            { name: "Salford" },
+            { name: "Salisbury" },
+            { name: "Sheffield" },
+            { name: "Southampton" },
+            { name: "Southend-on-Sea" },
+            { name: "St Albans" },
+            { name: "Stoke on Trent" },
+            { name: "Sunderland" },
+            { name: "Truro" },
+            { name: "Wakefield" },
+            { name: "Wells" },
+            { name: "Westminster" },
+            { name: "Winchester" },
+            { name: "Wolverhampton" },
+            { name: "Worcester" },
+            { name: "York" },
+          ],
+        },
+      ],
     },
     {
-      countryname : "USA",
+      countryname: "USA",
       states: [
-        {name :"New York",
-      cities: [
-        { name: "New York"},
-        { name: "Buffalo"},
-        { name: "Rochester"},
-        { name: "Yonkers"},
-        { name: "Syracuse"},
-        { name: "Albany"},
-        { name: "New Rochelle"},
-        { name: "Mount Vernon"},
-        { name: "Schenectady"},
-        { name: "Utica"},
-        { name: "White Plains"},
-        { name: "Hempstead"},
-        { name: "Troy"},
-        { name: "Niagara Falls"},
-        { name: "Binghamton"},
-        { name: "Freeport"},
-        { name: "Valley Stream"},
-
-      ]}
-      ]
-    }
-
+        {
+          name: "New York",
+          cities: [
+            { name: "New York" },
+            { name: "Buffalo" },
+            { name: "Rochester" },
+            { name: "Yonkers" },
+            { name: "Syracuse" },
+            { name: "Albany" },
+            { name: "New Rochelle" },
+            { name: "Mount Vernon" },
+            { name: "Schenectady" },
+            { name: "Utica" },
+            { name: "White Plains" },
+            { name: "Hempstead" },
+            { name: "Troy" },
+            { name: "Niagara Falls" },
+            { name: "Binghamton" },
+            { name: "Freeport" },
+            { name: "Valley Stream" },
+          ],
+        },
+      ],
+    },
   ],
 };
 
@@ -657,10 +639,10 @@ function getCity() {
   let e = document.getElementById("country");
   document.getElementById("city").innerHTML = "";
   let text1 = e.options[e.selectedIndex].text;
-   
+
   let e2 = document.getElementById("state");
   let text2 = e2.options[e2.selectedIndex].text;
-   
+
   for (let j = 0; j < Cities.country.length; j++) {
     if (text1 === Cities.country[j].countryname) {
       for (let i = 0; i < Cities.country[j].states.length; i++) {

@@ -1,7 +1,6 @@
 submitBtn.addEventListener("click", formValidation);
 
 function formValidation() {
- 
   nameValidation();
   emailValidation();
   dobValidation();
@@ -11,22 +10,18 @@ function formValidation() {
   stateValidation();
   cityValidation();
 
-  
-    if(
-        userName.value !== "" && 
-        userEmail.value !== "" && 
-        userDOB.value !== "" && 
-        (Male.checked  || Female.checked ) &&
-        (Reading.checked || Traveling.checked ||   Sports.checked ) 
-        &&
-        userCountry.value !== "" && 
-        userState.value !== "" && 
-        userCity.value !== "" 
-    )
-    {
-        formValid = true;
-    }
-     
+  if (
+    userName.value !== "" &&
+    userEmail.value !== "" &&
+    userDOB.value !== "" &&
+    (Male.checked || Female.checked) &&
+    (Reading.checked || Traveling.checked || Sports.checked) &&
+    userCountry.value !== "" &&
+    userState.value !== "" &&
+    userCity.value !== ""
+  ) {
+    formValid = true;
+  }
 }
 
 userName.addEventListener("input", nameValidation);
@@ -57,8 +52,6 @@ function emailValidation() {
 userDOB.addEventListener("input", dobValidation);
 const dobRegExp = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/;
 function dobValidation() {
-
-
   if (userDOB.value == "") {
     showError("dobError", "Please Enter Your DOB");
   } else if (!dobRegExp.test(userDOB.value)) {
